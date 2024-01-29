@@ -1,0 +1,17 @@
+services: 
+  # db service:
+  db_back:
+    container_name: db_back
+    image: mariadb:latest
+    security_opt:
+      - no-new-privileges:true
+    restart: always
+    command: --init-file=/data/application/init.sql
+    volumes:
+        - /data:/var/lib/mysql
+        - ./init.sql:/data/application/init.sql
+    ports:
+      - 3306:3306
+    environment:
+      MARIADB_ROOT_PASSWORD: 4mvstWAvkShcgsOMG5fh
+
